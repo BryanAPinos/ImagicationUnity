@@ -1,0 +1,56 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="ChatBoxFunctions">
+			<method name="ToggleChat"/>
+			<method name="ToggleChat"/>
+		</type>
+		<type fullname="Imagication.ChatManager">
+			<method name="SendMsg"/>
+		</type>
+		<type fullname="Imagication.GameManager">
+			<method name="LeaveRoom"/>
+		</type>
+		<type fullname="Imagication.Launcher">
+			<method name="Connect"/>
+		</type>
+		<type fullname="Imagication.PasswordInput">
+			<method name="CheckInput"/>
+		</type>
+		<type fullname="Imagication.PlayerNameInputField">
+			<method name="SetPlayerName"/>
+		</type>
+		<type fullname="PopUpSystem">
+			<method name="nextPage"/>
+			<method name="nextPage"/>
+			<method name="nextPage"/>
+			<method name="nextPage"/>
+			<method name="nextPage"/>
+			<method name="nextPage"/>
+			<method name="unFreeze"/>
+			<method name="unFreeze"/>
+			<method name="unFreeze"/>
+			<method name="unFreeze"/>
+			<method name="unFreeze"/>
+			<method name="unFreeze"/>
+		</type>
+		<type fullname="Stationary">
+			<method name="Bye"/>
+			<method name="opt1"/>
+			<method name="opt2"/>
+			<method name="opt3"/>
+			<method name="opt4"/>
+		</type>
+		<type fullname="TourGuideSelection">
+			<method name="StudentPressed"/>
+			<method name="TourGuidePressed"/>
+		</type>
+	</assembly>
+	<assembly fullname="awrtc" ignoreIfMissing="1">
+		<type fullname="Byn.Unity.Examples.ConferenceApp">
+			<method name="AudioToggle"/>
+			<method name="AudioToggle"/>
+			<method name="toggleMic"/>
+			<method name="VideoToggle"/>
+		</type>
+	</assembly>
+</linker>
