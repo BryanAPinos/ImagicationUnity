@@ -1,0 +1,25 @@
+{
+    "Campus": 
+    [
+        {
+            "title": "Burchard Building",
+            "description0": "The Burchard Building also hosts classes and faculty offices for the Department of Physics, Department of Electrical and Computer Engineering and the Department of Chemical Engineering and Materials Science. Additionally, it also boasts a newly renovated student lounge, complete with a kitchen, a quiet study room and a team meeting room.",
+            "description1": "Attached to Burchard is the Red & Gray Café, small coffee shop that offers salads, sandwiches, snacks, beverages, desserts and more."
+        },
+        {
+            "title": "Babbio Center",
+            "description0": "The Babbio Center is the home of the School of Business, and is where most business classes are held. The Babbio Center also is where Stevens' high-tech financial analytics labs are located. The building commands an incredible view of the Manhattan skyline and has a variety of collaborative workspaces for students throughout. Faculty and leadership have offices on the upper floors of the Babbio Center, while parking is available in the attached garage.",
+            "description1": ""
+        },
+        {
+            "title": "Edwin A. Stevens & Debaun Auditorium",
+            "description0": "Named in honor of the university's founder, the Edwin A. Stevens Hall (EAS) serves as the home of the Charles V. Schaefer, Jr. School of Engineering & Science (SES), the largest school at Stevens comprising eight academic departments that span engineering and science. In addition to administrative offices and classrooms, EAS also houses DeBaun Auditorium, the site of theatrical, musical and dance performances, as well as special events and university lectures.",
+            "description1": "EAS has a rich historical and architectural pedigree. Dating back to when the university first opened its doors in 1870 as the first school of mechanical engineering in the nation, EAS has been the cornerstone building on the Stevens campus. Built in the high Victorian Gothic style, the 80,000-square-foot, five-story masonry building was designed by Civil War architect Richard Upjohn, famous for the design of Trinity Church in New York City."
+        },
+        {
+            "title": "McLean Hall",
+            "description0": "McLean Hall hosts most of the chemistry and biomedical engineering labs at Stevens. Active research labs include the Center for Healthcare Innovation, the Movement Control Rehabilitation (MOCORE) Laboratory, the Translational Research in Medicine lab, the Motion Capture Laboratory, the Center for Mass Spectrometry and the Synthetic Organic and Medicinal Chemistry. McLean also has multiple neuroengineering focused labs, including the McConnell lab and the Yu Lab.",
+            "description1": "McLean Hall also hosts classes and faculty offices for the biomedical engineering chemistry and biological sciences, chemical engineering and materials science and mechanical engineering departments."
+        }
+    ]
+}

@@ -1,0 +1,84 @@
+{
+    "dialogueData":{
+    "Attila": 
+    [
+        {
+            "npc": "Quack-quack! Greetings, esteemed visitor! I'm Attila the Duck, the proud and spirited mascot of Stevens Institute of Technology. As you waddle your way onto our beautiful campus, let me be your cheerful guide and share a little about myself and this amazing place you're about to explore.",
+            "user": "",
+            "responses": [
+                "Can you tell me more about yourself?",
+                "What can I do near the Stevens Campus?",
+                "How is the campus life and student community?",
+                "Can you do the duck dance?",
+                "Bye!"
+            ]
+        },
+        {
+            "npc": "I am flattered that you asked! As the beloved symbol of Stevens, I embody the spirit of our community—tenacious, forward-thinking, and always ready to take on new challenges. I love free bread, getting up at the quack of dawn, high fives and cheering on Stevens! My favorite colors are cardinal and gray. At big events, you’ll see me walking around greeting everyone. I hope to see you in person!",
+            "user": "Can you tell me more about yourself?",
+            "responses": [
+                "Can you tell me more about yourself?",
+                "What can I do near the Stevens Campus?",
+                "How is the campus life and student community?",
+                "Can you do the duck dance?",
+                "Bye!"
+            ]
+        },
+        {
+            "npc": "Ah, the wonderful opportunities that await you near Stevens Institute of Technology! Hoboken, our lively hometown, is brimming with exciting things to see and do. Allow me, Attila the Duck, to quack up a list of fantastic activities just a beak away from our campus: 1. Stroll along the waterfront 2. Catch live music and performances 3. Explore Washington Street 4. Visit Pier A Park 5. Hop on a ferry to NYC",
+            "user": "What can I do near the Stevens Campus?",
+            "responses": [
+                "Can you tell me more about yourself?",
+                "What can I do near the Stevens Campus?",
+                "How is the campus life and student community?",
+                "Can you do the duck dance?",
+                "Bye!"
+            ]
+        },
+        {
+            "npc": "The campus life and the student community at Stevens Institute of Technology are absolutely feather-tastic!  You'll find plenty of clubs, events, and opportunities to connect with like-minded peers. The close-knit environment fosters strong relationships between students and faculty. Get ready for an exciting and fulfilling college experience with a supportive flock by your side. Quack!",
+            "user": "How is the campus life and student community?",
+            "responses": [
+                "Can you tell me more about yourself?",
+                "What can I do near the Stevens Campus?",
+                "How is the campus life and student community?",
+                "Can you do the duck dance?",
+                "Bye!"
+            ]
+        },
+        {
+            "npc": "Check out my moves!",
+            "user": "Can you do the duck dance?",
+            "responses": [
+                "Can you tell me more about yourself?",
+                "What can I do near the Stevens Campus?",
+                "How is the campus life and student community?",
+                "Can you do the duck dance?",
+                "Bye!"
+            ]
+        },
+        {
+            "npc": "Bye! Hope to see you around!",
+            "user": "Bye!",
+            "responses": []
+        }
+    ],
+    "Dr. Doofenshmirtz":
+    [
+        {
+            "npc": "Ah Perry the Platapus",
+            "user": "",
+            "responses": [
+                "Ah Dr. Heinz Doofenshmirtz"
+            ]
+        },
+        {
+            "npc": "",
+            "user": "",
+            "responses": [
+                ""
+            ]
+        }
+    ]
+}
+}

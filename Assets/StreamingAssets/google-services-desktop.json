@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "210009954307",
+    "firebase_url": "https://webrtc-8e24d-default-rtdb.firebaseio.com",
+    "project_id": "webrtc-8e24d",
+    "storage_bucket": "webrtc-8e24d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210009954307:android:2936d3975ea12633bc5636",
+        "android_client_info": {
+          "package_name": "imagication.webrtc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210009954307-h94q3drgtk46aof1rkv4f6i70s1ombv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD10CdWjf4mtv-Hwij7MiiUOtPrjmXBzns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210009954307-h94q3drgtk46aof1rkv4f6i70s1ombv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

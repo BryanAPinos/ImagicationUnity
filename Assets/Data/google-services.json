@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "256103094953",
+    "project_id": "unityanalytics-525cb",
+    "storage_bucket": "unityanalytics-525cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256103094953:android:a02f36eb6e1c32657b67b8",
+        "android_client_info": {
+          "package_name": "com.unity.analytics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256103094953-sp766ur8tg8uq0qeqgq7075hnv5s21lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDihRorl9UGmWr8OX7hrlpuZ9Bkv2VHyq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256103094953-sp766ur8tg8uq0qeqgq7075hnv5s21lr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
