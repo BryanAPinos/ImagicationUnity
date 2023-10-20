@@ -20,19 +20,13 @@ public class Stationary : MonoBehaviourPun
 
     public GameObject chatBox;
     public TextMeshProUGUI chatTitle;
-
     public TextMeshProUGUI npcMessage;
-
     public GameObject spacebarPopUp;
     public TextMeshProUGUI spacebarTitle;
     public TextMeshProUGUI spacebarInstruction;
-
     public ScrollRect myScrollRect;
-
     private static bool allowChat;
-
     private Vector3 targetObject;
-
     private AudioSource audioSource;
     void Start()
     {
@@ -45,6 +39,8 @@ public class Stationary : MonoBehaviourPun
 
     void Update()
     {
+        // If the player is close enough to the NPC, show the spacebar popup
+        // and allow the player to talk to the NPC
         if (Input.GetKeyDown(KeyCode.Space) && allowChat)
         {
             audioSource.Play();
@@ -55,16 +51,15 @@ public class Stationary : MonoBehaviourPun
             PopUpSystem.isFrozen = true;
             gameObject.transform.LookAt(targetObject);
             gameObject.transform.eulerAngles = new Vector3(0, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
-
-
         }
-
     }
     public void chatPopUp(bool action, GameObject user)
     {
+        // Enable the spacebar popup and set its text to the name of the NPC
         spacebarTitle.text = gameObject.transform.GetChild(0).name;
         spacebarInstruction.text = "Press <sprite=0> to talk to " + gameObject.transform.GetChild(0).name + ".";
 
+        // Chat popup
         chatTitle.text = "Meet " + gameObject.transform.GetChild(0).name;
         allowChat = action;
         Vector3 targetPosition = new Vector3(user.transform.position.x, user.transform.position.y, user.transform.position.z);
@@ -72,6 +67,7 @@ public class Stationary : MonoBehaviourPun
 
         spacebarPopUp.SetActive(action);
     }
+
     public void opt1()
     {
         // audioSource.Play();
@@ -104,6 +100,7 @@ public class Stationary : MonoBehaviourPun
     }
     private IEnumerator ByeWithDelay()
     {
+        // Give the player 5 seconds to read the NPC's message before closing the chatbox
         yield return new WaitForSeconds(5f);
         chatBox.SetActive(false);
         npcMessage.text = "Quack-quack! Greetings, esteemed visitor! I'm Attila the Duck, the proud and spirited mascot of Stevens Institute of Technology. As you waddle your way onto our beautiful campus, let me be your cheerful guide and share a little about myself and this amazing place you're about to explore.";
@@ -114,6 +111,7 @@ public class Stationary : MonoBehaviourPun
     }
     public void Bye()
     {
+        // Perform the NPC's goodbye animation and close the chatbox
         audioSource.Play();
         anim.SetBool("chickenDance", false);
         myScrollRect.verticalNormalizedPosition = 1;

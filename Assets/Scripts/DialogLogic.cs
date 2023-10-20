@@ -26,15 +26,19 @@ public class DialogLogic : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
+        // Called when player enters the trigger collider
+        // For our purposes, this means the player is close enough to the NPC to talk to them
         Debug.Log(collision.gameObject.name);
         Debug.Log(PhotonNetwork.NickName);
         Debug.Log("Collision");
 
         playerInRange = true;
+        // Set the name of the NPC to the name of the parent object
         PopUpSystem.postName = transform.parent.name;
     }
     void OnTriggerExit(Collider collision)
     {
+        // Clear the name of the NPC when the player leaves the trigger collider
         PopUpSystem.postName = "";
     }
 }

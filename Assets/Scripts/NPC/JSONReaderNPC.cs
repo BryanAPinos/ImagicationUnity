@@ -6,7 +6,10 @@ using System.Collections.Generic;
 public class JSONReaderNPC : MonoBehaviour
 
 {
-    public TextAsset JSONFile;  // Assign the JSON file in the Unity inspector
+    // Assign the JSON file in the Unity inspector
+    public TextAsset JSONFile;
+
+    // Dictionary to store the dialogue data
     private Dictionary<string, List<Dialogue>> dialogueData;
 
     [System.Serializable]
@@ -19,12 +22,12 @@ public class JSONReaderNPC : MonoBehaviour
     private class Dialogue
     {
         public string npc;
-        public string user;
-        public string[] responses;
+        public string[] npc_responses;
     }
 
     private void Awake()
     {
+        // When the game starts, load the dialogue data from the JSON file
         dialogueData = new Dictionary<string, List<Dialogue>>();
         LoadDialogueData();
     }
@@ -32,30 +35,33 @@ public class JSONReaderNPC : MonoBehaviour
     private void LoadDialogueData()
     {
         string jsonText = JSONFile.text;
-        Debug.Log("This is jsonText");
-        Debug.Log(jsonText);
+        Debug.Log("jsonText: " + jsonText);
 
         DialogueContainer dialogueContainer = JsonUtility.FromJson<DialogueContainer>(jsonText);
-        Debug.Log("this is dialogueContainer");
-        Debug.Log(dialogueContainer.dialogueData);
+        Debug.Log("dialogueContainer: " + dialogueContainer);
 
         dialogueData = dialogueContainer.dialogueData;
+        Debug.Log("dialogueData: " + dialogueData);
     }
 
     private void StartConversation(string header)
     {
         Debug.Log("Start Convo");
         Debug.Log(dialogueData);
+
+        // Check if the header exists in the JSON file
         if (dialogueData.ContainsKey(header))
         {
+            // Get the list of dialogues for the header
             List<Dialogue> dialogues = dialogueData[header];
 
+            // Display the NPC's dialogue
             foreach (Dialogue dialogue in dialogues)
             {
                 Debug.Log("NPC: " + dialogue.npc);
 
                 // Perform actions based on the user's response
-                foreach (string response in dialogue.responses)
+                foreach (string response in dialogue.npc_responses)
                 {
                     Debug.Log("User: " + response);
                 }

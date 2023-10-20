@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ChatBoxFunctions : MonoBehaviour
 {
+    // Initialize chatBox to be hidden
     bool isChatShowing = false;
     public GameObject chatBox;
     public Button button;
@@ -13,6 +14,7 @@ public class ChatBoxFunctions : MonoBehaviour
 
     void Start()
     {
+        // Toggle chatBox visibilty when button is clicked
         ToggleChat();
     }
 

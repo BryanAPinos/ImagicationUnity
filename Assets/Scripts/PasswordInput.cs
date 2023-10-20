@@ -17,18 +17,7 @@ namespace Imagication
 
         public void CheckInput(string password)
         {
-            // check inputfield contains the string password <-- the password for now.
-            if (string.IsNullOrEmpty(password))
-            {
-                // just a debug.Log to show that the password is correct (can be removed)
-                Debug.Log("Password needed");
-                passwordLocked = true;
-                return;
-            }
-            if (password == "password123")
-            {
-                passwordLocked = false;
-            }
+            passwordLocked = string.IsNullOrEmpty(password) || password != "password123";
         }
     }
 }

@@ -9,11 +9,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 {
 
     public InputField inputFieldCreate;
-
     public GameObject intro;
     public GameObject join;
     public GameObject game;
-
     public Camera camera;
 
     // Start is called before the first frame update
@@ -32,7 +30,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void Connect()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -85,10 +82,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        camera.enabled = true;
-
         join.SetActive(true);
         game.SetActive(false);
+
+        camera.enabled = true;
 
         base.OnLeftRoom();
     }

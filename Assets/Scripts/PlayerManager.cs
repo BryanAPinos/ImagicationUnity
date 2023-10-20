@@ -22,8 +22,6 @@ namespace Imagication
 
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
-
-
         public GameObject setMinimapLayer;
         public GameObject bodyColor;
         public GameObject leftArm;
@@ -54,6 +52,7 @@ namespace Imagication
 
                 LocalPlayerInstance = gameObject;
 
+                // Add a sphere to the player so that it can be seen on the minimap
                 setMinimapLayer = LocalPlayerInstance.transform.Find("Sphere").gameObject;
                 setMinimapLayer.layer = 10;
                 setMinimapLayer.GetComponent<Renderer>().material.color = Color.red;
@@ -79,7 +78,6 @@ namespace Imagication
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-
             /// <summary>
             /// MonoBehaviour method called on GameObject by Unity during initialization phase.
             /// </summary>
@@ -92,7 +90,6 @@ namespace Imagication
                 {
                     this.photonView.RPC("RPC_SendColor", RpcTarget.All, new Vector3(color.r, color.g, color.b));
                 }
-
 
                 if (_cameraWork != null)
                 {

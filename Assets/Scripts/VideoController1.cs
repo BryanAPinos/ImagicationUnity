@@ -17,15 +17,10 @@ public class VideoController1 : MonoBehaviour
         videoPlayer2 = screen2.GetComponent<VideoPlayer>();
         videoPlayer1.url = "StreamingAssets/" + nomVideo; //solution
         videoPlayer2.url = "StreamingAssets/" + nomVideo;
-
-
     }
 
     void Update()
     {
 
     }
-
-
-
 }

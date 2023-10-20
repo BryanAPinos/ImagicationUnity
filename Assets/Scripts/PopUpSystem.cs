@@ -17,11 +17,11 @@ public class PopUpSystem : MonoBehaviourPun
     public GameObject spacebarBox;
     public GameObject blocker;
     public GameObject demoLimit;
+
     public TextMeshProUGUI InfoTitle;
     public TextMeshProUGUI keyPointsFound;
     public TextMeshProUGUI popUpText;
     public TextMeshProUGUI popUpText2;
-
     public TextMeshProUGUI spacebarTitle;
 
     public Button endButton;
@@ -30,7 +30,6 @@ public class PopUpSystem : MonoBehaviourPun
     GameObject exclamationPoint;
     GameObject nonMain;
 
-
     private string trigger = "";
     public static bool picture = false;
     public static bool isFrozen = false;
@@ -38,22 +37,22 @@ public class PopUpSystem : MonoBehaviourPun
     public static string postName = "";
     public static string teleName = "";
 
-    List<string> nameOfBuildings = new List<string>();
-
     public GameObject hat;
     private Transform PlayerTransform;
     GameObject player;
 
+    List<string> nameOfBuildings = new List<string>();
     int currentPage = 1;
 
     public void PopUp(string popUpTrigger, string postName)
     {
+        // Show the pop up box with the building name and information
         string[] buildInfo;
 
         JSONReader json = GameObject.Find("JSONReader").GetComponent<JSONReader>();
         buildInfo = json.getBuildingInfo(postName);
 
-        if (popUpTrigger == "Pop")
+        if (popUpTrigger == "Pop") # TODO handle this better
         {
             spacebarBox.SetActive(true);
         }
@@ -63,19 +62,20 @@ public class PopUpSystem : MonoBehaviourPun
             spacebarBox.SetActive(false);
         }
 
-
         spacebarTitle.text = buildInfo[0];
         InfoTitle.text = buildInfo[0];
+
         popUpText.text = buildInfo[1];
         popUpText2.text = buildInfo[2];
 
         trigger = popUpTrigger;
-
-
-
     }
+
     void OnTriggerEnter(Collider collision)
     {
+        // If the player collides with a building, show the pop up box
+
+        // Ensure that the player who would be seeing the pop up box is the one who triggered it 
         if (!photonView.IsMine)
         {
             return;
@@ -166,7 +166,8 @@ public class PopUpSystem : MonoBehaviourPun
 
     private void Update()
     {
-        if (picture && Input.GetMouseButtonDown(0))
+        // If the player clicks on the building, show the pop up box
+        if (picture && Input.GetMouseButtonDown(0)) // TODO: only true when "plane" is clicked
         {
             RaycastHit hit;
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -183,21 +184,26 @@ public class PopUpSystem : MonoBehaviourPun
 
         if (Input.GetKeyDown(KeyCode.Space) && trigger == "Pop")
         {
-            noName = true;
-            isFrozen = true;
-            popUpText.gameObject.SetActive(true);
+            noName = true; // hide the name of the building
+            isFrozen = true; // freeze the player ('freeze' their movement)
+            popUpText.gameObject.SetActive(true); // show first page
             popUpText2.gameObject.SetActive(false);
 
             spacebarBox.SetActive(false);
             KeyPoint.SetActive(true);
+
+            // Hide the exclamation point only for the player who triggered it
             if (photonView.IsMine)
             {
                 exclamationPoint.SetActive(false);
             }
+
+            // If the player hadn't found this buildling yet, they earn a key point
             if (!nameOfBuildings.Contains(postName))
                 nameOfBuildings.Add(postName);
             keyPointsFound.text = nameOfBuildings.Count + "/" + JSONReader.numberOfKeyPoints + " Key Points Found";
 
+            // If popUpText2 is showing, show the end button, otherwise show the continue button
             if (popUpText2.text.Length > 1 || !string.IsNullOrEmpty(popUpText2.text))
             {
                 continueButton.gameObject.SetActive(true);
@@ -208,7 +214,9 @@ public class PopUpSystem : MonoBehaviourPun
                 continueButton.gameObject.SetActive(false);
                 endButton.gameObject.SetActive(true);
             }
-            if (nameOfBuildings.Count == 4)
+
+            // If the player has found all the buildings, show the hat
+            if (nameOfBuildings.Count == 4) # TODO: dynamic count of buildings
             {
                 hat.gameObject.SetActive(true);
             }

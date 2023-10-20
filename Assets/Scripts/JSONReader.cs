@@ -20,6 +20,7 @@ public class JSONReader : MonoBehaviour
     [System.Serializable]
     public class BuildingInfo
     {
+        // Campus is a collection of Building objects
         public Building[] Campus;
     }
 
@@ -28,8 +29,11 @@ public class JSONReader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Use the JSON file to populate the BuildingInfo object
         myBuildingInfo = JsonUtility.FromJson<BuildingInfo>(JSONFile.text);
         Debug.Log(myBuildingInfo.Campus.Length);
+
+        // Set the number of key points to the number of buildings in the JSON file
         numberOfKeyPoints = myBuildingInfo.Campus.Length;
     }
 
@@ -37,6 +41,7 @@ public class JSONReader : MonoBehaviour
     {
         string[] buildingInfo = new string[3];
 
+        // Search for and return the buildling info for the building whose title == postName
         for (int i = 0; i < myBuildingInfo.Campus.Length; i++)
         {
             if (myBuildingInfo.Campus[i].title == postName)

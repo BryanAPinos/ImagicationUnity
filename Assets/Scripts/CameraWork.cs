@@ -79,12 +79,18 @@ namespace Imagication
 
 			if (isFollowing)
 			{
+				// Get the current mouse input
 				PointerEventData eventData = new PointerEventData(EventSystem.current);
 				eventData.position = Input.mousePosition;
 
+				// Get all results hit by the raycast--
+				// A raycast is a line you draw from your camera to a point in the world
+				// Its use here is to check if the mouse is over any UI elements
 				var results = new List<RaycastResult>();
 				EventSystem.current.RaycastAll(eventData, results);
 
+				// Mouse0: Left Click
+				// If the mouse is over any UI elements, don't move the camera
 				if (Input.GetKey(KeyCode.Mouse0) && results.Count == 0)
 				{
 					Leash();
@@ -127,9 +133,11 @@ namespace Imagication
 			minicameraOffset.z = 0;
 			minicameraOffset.y = 60;
 
+			// Set positions to be the same as the target, but offset by the calculated offset distance
 			cameraTransform.position = Vector3.Lerp(cameraTransform.position, this.transform.position + this.transform.TransformVector(cameraOffset), smoothSpeed * Time.deltaTime);
 			miniCameraTransform.position = Vector3.Lerp(miniCameraTransform.position, this.transform.position + this.transform.TransformVector(minicameraOffset), 1);
-
+			
+			// Set the camera to look at the center of the target
 			cameraTransform.LookAt(this.transform.position + centerOffset);
 			miniCameraTransform.LookAt(this.transform.position);
 
@@ -137,28 +145,31 @@ namespace Imagication
 
 		void Leash()
 		{
-
 			cameraOffset.z = -distance;
 			cameraOffset.y = height;
 			minicameraOffset.z = 0;
 			minicameraOffset.y = 60;
 
+			// See above
 			cameraTransform.position = Vector3.Lerp(cameraTransform.position, this.transform.position + this.transform.TransformVector(cameraOffset), smoothSpeed * Time.deltaTime);
 			miniCameraTransform.position = Vector3.Lerp(miniCameraTransform.position, this.transform.position + this.transform.TransformVector(minicameraOffset), 1);
+
+			// Euler angles are the rotation of an object in 3D space
 			cameraTransform.eulerAngles = new Vector3(cameraTransform.eulerAngles.x, transform.eulerAngles.y, cameraTransform.eulerAngles.z);
 
+			// Get the axis (direction) of the mouse movement
 			float mouseY = Input.GetAxis("Mouse Y");
 
 			float xRotation = cameraTransform.eulerAngles.x;
+			// If the mouse is moving up
 			if (mouseY > 0)
 			{
-				// Debug.Log(xRotation - mouseY);
+				// If the camera is looking up or down, rotate it
 				if (xRotation - mouseY < 11.6 || xRotation - mouseY > 330)
 					cameraTransform.eulerAngles = new Vector3(cameraTransform.eulerAngles.x - mouseY, transform.eulerAngles.y, cameraTransform.eulerAngles.z);
 			}
 			else if (mouseY < 0)
 			{
-				// Debug.Log(xRotation - mouseY);
 				if (xRotation - mouseY < 11.6 || xRotation - mouseY > 330)
 					cameraTransform.eulerAngles = new Vector3(cameraTransform.eulerAngles.x - mouseY, transform.eulerAngles.y, cameraTransform.eulerAngles.z);
 			}
@@ -175,6 +186,8 @@ namespace Imagication
 			cameraTransform.position = this.transform.position + this.transform.TransformVector(cameraOffset);
 			miniCameraTransform.position = this.transform.position + this.transform.TransformVector(minicameraOffset);
 
+			// Set the camera to look at the center of the target
+			// Note that this method is a cut, meaning that it will not smoothly transition
 			cameraTransform.LookAt(this.transform.position + centerOffset);
 			miniCameraTransform.LookAt(this.transform.position);
 		}

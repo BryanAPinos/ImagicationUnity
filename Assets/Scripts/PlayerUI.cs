@@ -18,10 +18,8 @@ namespace Imagication
 		[Tooltip("UI Text to display Player's Name")]
 		[SerializeField]
 		public Text playerNameText;
-
-
+		
 		PlayerManager target;
-
 		float characterControllerHeight;
 		Transform targetTransform;
 		Renderer targetRenderer;

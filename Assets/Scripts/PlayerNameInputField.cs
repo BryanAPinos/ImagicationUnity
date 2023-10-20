@@ -21,7 +21,6 @@ namespace Imagication
 
         // Store the PlayerPref Key to avoid typos
         const string playerNamePrefKey = "PlayerName";
-
         public static bool locked = true;
 
         #endregion
@@ -39,6 +38,7 @@ namespace Imagication
             {
                 if (PlayerPrefs.HasKey(playerNamePrefKey))
                 {
+                    // Set the input field value to the player name if it is saved, otherwise keep the default value
                     defaultName = PlayerPrefs.GetString(playerNamePrefKey);
                     _inputField.text = defaultName;
                 }
@@ -64,6 +64,8 @@ namespace Imagication
                 locked = true;
                 return;
             }
+            
+            // Valid name
             locked = false;
             PhotonNetwork.NickName = value;
             PlayerPrefs.SetString(playerNamePrefKey, value);

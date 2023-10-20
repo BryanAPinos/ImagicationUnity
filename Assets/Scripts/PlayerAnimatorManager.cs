@@ -9,10 +9,8 @@ namespace Imagication
 
         #region Private Fields
 
-
         [SerializeField]
         private float directionDampTime = 0.25f;
-
 
         #endregion
 
@@ -20,7 +18,7 @@ namespace Imagication
         #region MonoBehaviour Callbacks
 
         private Animator _anim;
-        // Start is called before the first frame update
+
         void Start()
         {
             _anim = GetComponent<Animator>();
@@ -41,6 +39,8 @@ namespace Imagication
 
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
+
+            // Ensure the vertcal directional values are non-negative
             if (v < 0)
             {
                 v = 0;
@@ -52,7 +52,7 @@ namespace Imagication
 
             // deal with Jumping
             AnimatorStateInfo stateInfo = _anim.GetCurrentAnimatorStateInfo(0);
-            // only allow jumping if we are running.
+            // only allow jumping if we are running
             if (stateInfo.IsName("Base Layer.Run"))
             {
                 // When using trigger parameter

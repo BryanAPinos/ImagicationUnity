@@ -11,16 +11,12 @@ namespace Imagication
     public class PlayerMovement : MonoBehaviourPun
     {
         public CharacterController controller;
-
         public float speed = 8f;
         public float turnSpeed = 45f;
-        public float gravity = -9.81f;
         public float jumpHeight = 3f;
-
         public Transform groundCheck;
         public float groundDistance = 0.4f;
         public LayerMask groundMask;
-
         Vector3 velocity;
         bool isGrounded;
 
@@ -31,9 +27,9 @@ namespace Imagication
         [SerializeField] private bl_Joystick Joystick;
         [SerializeField] private float Speed = 2f;
 
+        //Mobile
         private Vector2 touchStartPos;
         private float rotationSpeed = 8.0f;
-        //Mobile
 
         //Animation
         private Animator _anim;
@@ -69,9 +65,12 @@ namespace Imagication
                 {
                     return;
                 }
+
+                // Use vertical and horizontal axis to move the player
                 var vel = Vector3.forward * Input.GetAxis("Vertical") * speed;
                 isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+                // prevent player from floating/clipping
                 if (isGrounded && velocity.y < 0)
                 {
                     velocity.y = -2f;
@@ -79,13 +78,14 @@ namespace Imagication
 
                 }
 
-                float x = Input.GetAxis("Horizontal");
-                float z = Input.GetAxis("Vertical");
+                float x = Input.GetAxis("Horizontal"); // A/D or Left/Right or Joystick
+                float z = Input.GetAxis("Vertical"); // W/S or Up/Down or Joystick
 
                 Vector3 move = transform.forward * z;
 
                 controller.Move(move * speed * Time.deltaTime);
 
+                // Handle Jumping
                 if (Input.GetButtonDown("Jump") && isGrounded)
                 {
                     velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -94,14 +94,17 @@ namespace Imagication
 
                 velocity.y += gravity * Time.deltaTime;
 
+                // Apply gravity to the player
                 controller.Move(velocity * Time.deltaTime);
+
+                // Rotate the player based on horizontal input 
                 transform.Rotate(Vector3.up, x * Time.deltaTime * turnSpeed);
 
                 //Animator
                 _anim.SetFloat("Speed", vel.z);
 
                 //MobileMovement
-                if (Application.isMobilePlatform || Launcher.mobileTest)
+                if (Application.isMobilePlatform || Launcher.mobileTest) # TODO: avoid double implementation of input for mobile
                 {
                     JoystickUI.SetActive(true);
                     float v = Joystick.Vertical; //get the vertical value of joystick

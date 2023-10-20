@@ -23,10 +23,8 @@ public class TourGuideSelection : MonoBehaviour
 
     public static string model = "student";
 
-
     public void TourGuidePressed()
     {
-
         characterModel.GetComponent<Image>().sprite = Dave;
 
         ColorBlock cb_Guide = GuideBtn.colors;
@@ -38,7 +36,7 @@ public class TourGuideSelection : MonoBehaviour
         StudentBtn.colors = cb_Student;
         passwordField.SetActive(true);
 
-        //Shorten the width of the name input field to 150px
+        // Shorten the width of the name input field to 150px
         RectTransform nameInputField = tourNameField.GetComponent<RectTransform>();
         nameInputField.sizeDelta = new Vector2(200, 35);
         nameInputField.localPosition = new Vector2(-68.6f, 1);
@@ -50,12 +48,10 @@ public class TourGuideSelection : MonoBehaviour
         nameTitle.localPosition = new Vector2(-85.7f, 35);
 
         model = "tourguide";
-
     }
 
     public void StudentPressed()
     {
-
         characterModel.GetComponent<Image>().sprite = Craig;
 
         ColorBlock cb_Guide = GuideBtn.colors;
@@ -79,7 +75,4 @@ public class TourGuideSelection : MonoBehaviour
 
         model = "student";
     }
-
-
-
 }
