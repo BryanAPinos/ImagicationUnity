@@ -10,9 +10,9 @@ public class MascotMovement : MonoBehaviour
 {
     NavMeshAgent nm;
     Rigidbody rb;
-    Animator anim; 
-    public Transform Target; //To follow individual
-    public Transform[] WayPoints; //To follow multiple points
+    Animator anim;
+    public Transform Target; // To follow individual
+    public Transform[] WayPoints; // To follow multiple points
     public int Cur_WayPoint;
     public float speed, stop_distance;
     public float PauseTimer;
@@ -29,9 +29,6 @@ public class MascotMovement : MonoBehaviour
         rb.freezeRotation = true;
         Target = WayPoints[Cur_WayPoint];
         cur_timer = PauseTimer;
-
-
-
     }
 
 
@@ -43,13 +40,13 @@ public class MascotMovement : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, Target.position);
 
-        if(distance > stop_distance && WayPoints.Length > 0)
+        if (distance > stop_distance && WayPoints.Length > 0)
         {
             Target = WayPoints[Cur_WayPoint];
         }
         else if (distance <= stop_distance && WayPoints.Length > 0)
         {
-            if(cur_timer > 0)
+            if (cur_timer > 0)
             {
                 cur_timer -= 0.01f;
             }
@@ -65,7 +62,7 @@ public class MascotMovement : MonoBehaviour
             }
         }
         anim.SetFloat("Velocity", Velocity);
-        if(Velocity == 0)
+        if (Velocity == 0)
             anim.SetBool("Idle", true);
         else
             anim.SetBool("Idle", false);

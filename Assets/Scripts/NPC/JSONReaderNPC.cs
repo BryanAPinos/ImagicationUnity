@@ -1,75 +1,18 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// using UnityEngine.UI;
-
-// public class JSONReaderNPC : MonoBehaviour
-// {
-//     public TextAsset JSONFile;
-    
-//     [System.Serializable]
-//     public class ChatData
-//     {
-//         public string npc;
-//         public string user;
-//         public string[] responses;
-//     }
-    
-//     [System.Serializable]
-//     public class CharacterData
-//     {
-//         public ChatData[] conversations;
-//     }
-
-//     // [System.Serializable]
-//     // public class ChatDataContainer
-//     // {
-//     //     public Dictionary<string, CharacterData> Characters;
-//     // }
-
-//     // public NPCFlowChat npcChatInfo = new NPCFlowChat();
-//     public CharacterData dataContainer = new CharacterData();
-
-//     void Start()
-//     {
-//         // ChatDataContainer dataContainer = JsonUtility.FromJson<ChatDataContainer>(JSONFile.text);
-//         dataContainer = JsonUtility.FromJson<CharacterData>(JSONFile.text);
-//         // CharacterData dataContainer = JsonUtility.FromJson<CharacterData>(JSONFile.text);
-//         Debug.Log("This is the JSONREADERNPC");
-//         Debug.Log(dataContainer);
-//         // Debug.Log(dataContainer.conversations.Length);
-//         for(int i = 0; i < dataContainer.conversations.Length; i++)
-//         {
-//             Debug.Log(dataContainer.conversations[i]);
-//         }
-
-
-        
-//         // CharacterData.conversations[i];
-//     }
-
-// }
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-// using System.Collections.Generic;
-// using UnityEngine;
 
 public class JSONReaderNPC : MonoBehaviour
 
 {
     public TextAsset JSONFile;  // Assign the JSON file in the Unity inspector
-
     private Dictionary<string, List<Dialogue>> dialogueData;
-
-
 
     [System.Serializable]
     private class DialogueContainer
     {
         public Dictionary<string, List<Dialogue>> dialogueData;
-        
     }
 
     [System.Serializable]
@@ -95,8 +38,6 @@ public class JSONReaderNPC : MonoBehaviour
         DialogueContainer dialogueContainer = JsonUtility.FromJson<DialogueContainer>(jsonText);
         Debug.Log("this is dialogueContainer");
         Debug.Log(dialogueContainer.dialogueData);
-
-
 
         dialogueData = dialogueContainer.dialogueData;
     }
@@ -133,6 +74,4 @@ public class JSONReaderNPC : MonoBehaviour
     {
         StartConversation("Dr. Doofenshmirtz");
     }
-
-
 }

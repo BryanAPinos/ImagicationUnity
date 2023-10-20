@@ -9,7 +9,7 @@ public class RandomColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,9 +21,8 @@ public class RandomColor : MonoBehaviour
         }
     }
 
-    void ChangeColor() {
-        // MeshRenderer m =obj.GetComponent<MeshRenderer>();
-        
+    void ChangeColor()
+    {
         meshrenderer.material.color = Random.ColorHSV();
     }
 

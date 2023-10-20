@@ -8,16 +8,16 @@ public class DragableChat : MonoBehaviour, IBeginDragHandler, IDragHandler
     private Vector3 offset;
 
     #region IBeginDragHandler implementation
-    public void OnBeginDrag (PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
         offset = transform.position - (Vector3)eventData.position;
-        
     }
     #endregion
+
     #region IDragHandler implementation
-    public void OnDrag (PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData)
     {
-        transform.position = (Vector3) eventData.position + offset;
+        transform.position = (Vector3)eventData.position + offset;
     }
     #endregion
 }

@@ -13,22 +13,18 @@ public class VideoController : MonoBehaviour
     public GameObject screen2;
     void Start()
     {
-        // videoPlayer = gameObject.GetComponent<VideoPlayer>(); 
-        videoPlayer1 = screen1.GetComponent<VideoPlayer>(); 
-        videoPlayer2 = screen2.GetComponent<VideoPlayer>(); 
-        // videoPlayer1.url = System.IO.Path.Combine (Application.streamingAssetsPath,nomVideo); //turn off when running in editor
-        // videoPlayer2.url = System.IO.Path.Combine (Application.streamingAssetsPath,nomVideo); //turn off when running in editor
+        videoPlayer1 = screen1.GetComponent<VideoPlayer>();
+        videoPlayer2 = screen2.GetComponent<VideoPlayer>();
         videoPlayer1.url = "StreamingAssets/" + nomVideo;
         videoPlayer2.url = "StreamingAssets/" + nomVideo;
-        // videoPlayer.SetDirectAudioMute(0,true);
-        
+
     }
 
     void Update()
     {
-    
+
     }
 
 
-   
+
 }

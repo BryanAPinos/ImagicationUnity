@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Imagication 
+namespace Imagication
 {
     [RequireComponent(typeof(InputField))]
-    public class PasswordInput : MonoBehaviour {
-     
-        
-
+    public class PasswordInput : MonoBehaviour
+    {
         public static bool passwordLocked = true;
 
-        void Start() {
+        void Start()
+        {
             passwordLocked = true;
         }
-    
-        public void CheckInput(string password) {
-            if (string.IsNullOrEmpty(password))      // check inputfield contains the string password <-- the password for now.
+
+        public void CheckInput(string password)
+        {
+            // check inputfield contains the string password <-- the password for now.
+            if (string.IsNullOrEmpty(password))
             {
-                Debug.Log("Password needed");     // just a debug.Log to show that the password is correct (can be removed)
+                // just a debug.Log to show that the password is correct (can be removed)
+                Debug.Log("Password needed");
                 passwordLocked = true;
                 return;
             }
-            if (password == "password123") {
+            if (password == "password123")
+            {
                 passwordLocked = false;
             }
         }
-        
     }
-    
 }

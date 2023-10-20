@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Imagication 
+namespace Imagication
 {
     public class PlayerAnimatorManager : MonoBehaviour
     {
@@ -28,7 +28,7 @@ namespace Imagication
             {
                 Debug.LogError("PlayerAnimatorManager is Missing Animator Component", this);
             }
-            
+
         }
 
         // Update is called once per frame
