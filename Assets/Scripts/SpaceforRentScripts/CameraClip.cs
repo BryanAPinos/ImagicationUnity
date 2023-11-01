@@ -9,14 +9,15 @@ public class CameraClip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance)) {
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance))
+        {
             // a nearby obstacle was detected, adjust the camera's position or movement here
             // get the distance from the camera to the obstacle
             float distanceToHit = Vector3.Distance(transform.position, hit.point);
@@ -26,9 +27,6 @@ public class CameraClip : MonoBehaviour
 
             // move the camera to the new position
             transform.position = newPosition;
-
         }
-
-        
     }
 }

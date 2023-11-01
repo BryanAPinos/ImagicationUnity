@@ -11,7 +11,7 @@ using Photon.Realtime;
 
 namespace Imagication
 {
-	#pragma warning disable 649
+#pragma warning disable 649
 
     /// <summary>
     /// Player manager.
@@ -19,29 +19,18 @@ namespace Imagication
     public class EventPlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         #region Public Fields
-
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
-
-
-        // public GameObject setMinimapLayer;
         public GameObject bodyColor;
         public GameObject leftArm;
         public GameObject rightArm;
-        
         #endregion
 
         #region Private Fields
-
         [Tooltip("The Player's UI GameObject Prefab")]
         [SerializeField]
         private GameObject PlayerUiPrefab;
         public Color color;
-        // public int colorIndex;
-        // private float _r, _g, _b;
-
-        // ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
-
         #endregion
 
         #region MonoBehaviour CallBacks
@@ -55,34 +44,11 @@ namespace Imagication
             // used in GameManager.cs: we keep track of the localPlayer instance to prevent instanciation when levels are synchronized
             if (photonView.IsMine)
             {
-                // PlayerManager.LocalPlayerInstance = this.gameObject;
-
                 LocalPlayerInstance = gameObject;
-
-                // setMinimapLayer = LocalPlayerInstance.transform.Find("Sphere").gameObject;
-                // setMinimapLayer.layer = 10;
-                // setMinimapLayer.GetComponent<Renderer>().material.color = Color.red;
-
-                // bodyColor = LocalPlayerInstance.transform.Find("User/body").gameObject;
-                // leftArm = LocalPlayerInstance.transform.Find("User/l_sleeve").gameObject;
-                // rightArm = LocalPlayerInstance.transform.Find("User/r_sleeve").gameObject;
-
-                // color = Random.ColorHSV();
-                // this.photonView.RPC("RPC_SendColor", RpcTarget.All, new Vector3(color.r, color.g, color.b));
-
-                // colorIndex = Random.Range(0, 4);
-                // bodyColor.GetComponent<Renderer>().material.color = color;
-                // leftArm.GetComponent<Renderer>().material.color = color;
-                // rightArm.GetComponent<Renderer>().material.color = color;
-
-                // playerProperties["characterColor"]; = "green";
-                // PhotonNetwork.SetPlayerCustomProperties(playerProperties);
-                
             }
 
             // #Critical
             // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
-            // DontDestroyOnLoad(this.gameObject);
             DontDestroyOnLoad(gameObject);
         }
         [PunRPC]
@@ -95,21 +61,12 @@ namespace Imagication
             bodyColor.GetComponent<Renderer>().material.color = color;
             leftArm.GetComponent<Renderer>().material.color = color;
             rightArm.GetComponent<Renderer>().material.color = color;
-
-            // gameObject.GetComponentInChildren<Renderer>().material.color = color;
         }
 
-    
+
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-        //     if (stream.IsWriting)
-        //     {
-        //         stream.SendNext(colorIndex);
-        //     }
-        //     else
-        //     {
-        //         colorIndex = (int)stream.ReceiveNext();
-        //     }
+
         }
 
         /// <summary>
@@ -118,12 +75,9 @@ namespace Imagication
         public void Start()
         {
             EventCameraWork _cameraWork = gameObject.GetComponent<EventCameraWork>();
-            // Camera _miniMapCameraWork = GameObject.Find("Minimap Cam").GetComponent<Camera>();
-            // CameraWork _miniMapCameraWork = GameObject.Find("Minimap Cam").GetComponent<CameraWork>();
-            // Debug.Log(_cameraWork);
-
             color = Random.ColorHSV();
-            if(TourGuideSelection.model != "tourguide") {
+            if (TourGuideSelection.model != "tourguide")
+            {
                 this.photonView.RPC("RPC_SendColor", RpcTarget.All, new Vector3(color.r, color.g, color.b));
             }
 
@@ -133,7 +87,6 @@ namespace Imagication
                 if (photonView.IsMine)
                 {
                     _cameraWork.OnStartFollowing();
-                    // _miniMapCameraWork.OnMiniMapStartFollowing();
                 }
             }
             else
@@ -141,13 +94,6 @@ namespace Imagication
                 Debug.LogError("<Color=Red><b>Missing</b></Color> CameraWork Component on player Prefab.", this);
             }
 
-            // Create the UI
-            // if (PlayerUiPrefab != null)
-            // {
-            //     GameObject _uiGo = Instantiate(PlayerUiPrefab);
-            //     _uiGo.SendMessage ("SetTarget", this, SendMessageOptions.RequireReceiver);
-
-            // }
             if (this.PlayerUiPrefab != null)
             {
                 GameObject _uiGo = Instantiate(this.PlayerUiPrefab);
@@ -158,28 +104,19 @@ namespace Imagication
                 Debug.LogWarning("<Color=Red><b>Missing</b></Color> PlayerUiPrefab reference on player Prefab.", this);
             }
 
-            #if UNITY_5_4_OR_NEWER
+#if UNITY_5_4_OR_NEWER
             // Unity 5.4 has a new scene management. register a method to call CalledOnLevelWasLoaded.
 			UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-            #endif
+#endif
         }
 
 
-		public override void OnDisable()
-		{
-			// Always call the base to remove callbacks
-			base.OnDisable ();
+        public override void OnDisable()
+        {
+            // Always call the base to remove callbacks
+            base.OnDisable();
             UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
-
-            // #if UNITY_5_4_OR_NEWER
-			// UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
-			// #endif
-
-
-			// #if UNITY_5_4_OR_NEWER
-			// UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
-			// #endif
-		}
+        }
 
 
         /// <summary>
@@ -194,19 +131,13 @@ namespace Imagication
             if (photonView.IsMine)
             {
                 this.ProcessInputs();
-                if(PopUpSystem.noName == true)
+                if (PopUpSystem.noName == true)
                 {
                     PlayerUiPrefab.SetActive(false);
                 }
                 else
                     PlayerUiPrefab.SetActive(true);
             }
-            // if(PopUpSystem.noName == true)
-            // {
-            //     PlayerUiPrefab.SetActive(false);
-            // }
-            // else
-            //     PlayerUiPrefab.SetActive(true);
         }
 
         /// <summary>
@@ -230,7 +161,7 @@ namespace Imagication
         /// <param name="other">Other.</param>
         public void OnTriggerStay(Collider other)
         {
-            // we dont' do anything if we are not the local player.
+            // we don't do anything if we are not the local player.
             if (!photonView.IsMine)
             {
                 return;
@@ -238,13 +169,13 @@ namespace Imagication
         }
 
 
-        #if !UNITY_5_4_OR_NEWER
+#if !UNITY_5_4_OR_NEWER
         /// <summary>See CalledOnLevelWasLoaded. Outdated in Unity 5.4.</summary>
         void OnLevelWasLoaded(int level)
         {
             this.CalledOnLevelWasLoaded(level);
         }
-        #endif
+#endif
 
 
         /// <summary>
@@ -259,24 +190,20 @@ namespace Imagication
             if (!Physics.Raycast(transform.position, -Vector3.up, 5f))
             {
                 transform.position = transform.position;
-                // transform.position = new Vector3(0f, 5f, 0f);
             }
 
             GameObject _uiGo = Instantiate(this.PlayerUiPrefab);
             _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
         }
-
         #endregion
 
         #region Private Methods
-
-
-		#if UNITY_5_4_OR_NEWER
+#if UNITY_5_4_OR_NEWER
 		void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
 		{
 			this.CalledOnLevelWasLoaded(scene.buildIndex);
 		}
-		#endif
+#endif
 
         /// <summary>
         /// Processes the inputs. This MUST ONLY BE USED when the player has authority over this Networked GameObject (photonView.isMine == true)
@@ -284,8 +211,6 @@ namespace Imagication
         void ProcessInputs()
         {
         }
-
         #endregion
-
     }
 }

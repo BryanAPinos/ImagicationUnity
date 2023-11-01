@@ -5,36 +5,31 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 
-// using TMPro;
-
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
 
     public InputField inputFieldCreate;
-
     public GameObject intro;
     public GameObject join;
     public GameObject game;
-
     public Camera camera;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //Use a Button to Call this Function
     public void Connect()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -61,7 +56,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.JoinLobby();
-        
+
         base.OnConnectedToMaster();
     }
 
@@ -69,7 +64,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         intro.SetActive(false);
         join.SetActive(true);
-        
+
         base.OnJoinedLobby();
     }
 
@@ -77,21 +72,21 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         join.SetActive(false);
         game.SetActive(true);
-        
+
         camera.enabled = false;
-        
+
         PhotonNetwork.Instantiate("Player", transform.position, Quaternion.identity);
-        
+
         base.OnJoinedRoom();
     }
 
     public override void OnLeftRoom()
     {
-        camera.enabled = true;
-
         join.SetActive(true);
         game.SetActive(false);
-        
+
+        camera.enabled = true;
+
         base.OnLeftRoom();
     }
 }
